@@ -7,6 +7,7 @@ import { Alert, AlertDescription } from './ui/alert';
 import { Users, BarChart3, Eye, EyeOff, ShieldCheck, Sparkles } from 'lucide-react';
 import backgroundImage from '../assets/login-background.png';
 import logoImage from '../assets/zoopiter-logo.png';
+import { ParallaxGraphCard } from './ParallaxGraphCard';
 import './Login.css';
 
 interface LoginProps {
@@ -61,43 +62,52 @@ export function Login({ onLogin }: LoginProps) {
 
   return (
     <div className="min-h-screen flex">
-      {/* Left side - Branding */}
-      <div className="hidden lg:flex lg:flex-1 bg-[#0B0F1F] text-white p-12 flex-col justify-between relative overflow-hidden">
-        {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-black" />
+      {/* Left side - Branding & Interactive Parallax Showcase */}
+      <div className="hidden lg:flex lg:flex-1 bg-[#090D1A] text-white p-8 px-12 flex-col justify-between relative overflow-hidden">
+        {/* Subtle radial glow overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,#1e293b40_0%,transparent_70%)]" />
+        <div className="absolute -top-32 -left-32 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10">
-          <div className="mb-8">
-            <img src={logoImage} alt="Zoopiter" className="h-14" />
+          <div className="mb-4 flex items-center justify-between">
+            <img src={logoImage} alt="Zoopiter" className="h-12" />
+            <span className="text-[11px] font-bold tracking-wider px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase">
+              Live Interactive Preview
+            </span>
           </div>
-          <h2 className="mb-6 login-title">
+          <h2 className="mb-2 login-title">
             Streamline Your Sales Process
           </h2>
-          <p className="login-subtitle">
-            Manage leads, track performance, and drive revenue growth with our comprehensive CRM solution.
+          <p className="login-subtitle text-slate-400 text-sm max-w-lg">
+            Manage leads, track performance, and drive revenue growth with real-time analytics.
           </p>
         </div>
 
-        <div className="relative z-10 grid grid-cols-1 gap-8">
-          <div className="flex items-start space-x-4">
-            <div className="mt-1 p-3 bg-[#2D3548] rounded-xl">
-              <Users className="h-5 w-5 text-white" />
+        {/* 3D Parallax Graph Block Showcase */}
+        <div className="relative z-20 my-2">
+          <ParallaxGraphCard />
+        </div>
+
+        <div className="relative z-10 grid grid-cols-2 gap-6 pt-4 border-t border-slate-800/60">
+          <div className="flex items-start space-x-3">
+            <div className="mt-1 p-2.5 bg-[#1B2338] rounded-xl border border-slate-700/50">
+              <Users className="h-4 w-4 text-blue-400" />
             </div>
             <div>
-              <h3 className="mb-1 text-white feature-title">Team Management</h3>
-              <p className="text-[#8B92A8] feature-description">
-                Assign leads, track performance, and manage your sales team effectively.
+              <h3 className="mb-0.5 text-white font-semibold text-xs">Team Management</h3>
+              <p className="text-[#8B92A8] text-[11px]">
+                Assign leads & track performance effectively.
               </p>
             </div>
           </div>
-          <div className="flex items-start space-x-4">
-            <div className="mt-1 p-3 bg-[#2D3548] rounded-xl">
-              <BarChart3 className="h-5 w-5 text-white" />
+          <div className="flex items-start space-x-3">
+            <div className="mt-1 p-2.5 bg-[#1B2338] rounded-xl border border-slate-700/50">
+              <BarChart3 className="h-4 w-4 text-emerald-400" />
             </div>
             <div>
-              <h3 className="mb-1 text-white feature-title">Performance Analytics</h3>
-              <p className="text-[#8B92A8] feature-description">
-                Get insights into sales performance with detailed reports and analytics.
+              <h3 className="mb-0.5 text-white font-semibold text-xs">Performance Analytics</h3>
+              <p className="text-[#8B92A8] text-[11px]">
+                Deep insights with real-time conversion reports.
               </p>
             </div>
           </div>
